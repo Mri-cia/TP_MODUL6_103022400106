@@ -6,10 +6,16 @@ Console.Write("Title: ");
 string? judul = Console.ReadLine();
 
 Console.Write("Play Count: ");
-
-if (!int.TryParse(Console.ReadLine(), out int playCount))
+int playCount = 0;
+try
 {
-    Console.WriteLine("Invalid input for play count. Please enter a valid integer.");
+    playCount = int.Parse(Console.ReadLine());
+} catch (FormatException)
+{
+    Console.WriteLine("Invalid input for play count.");
+} catch (OverflowException)
+{
+    Console.WriteLine("Play count is too large.");
 }
 
 Console.WriteLine("------------------");
